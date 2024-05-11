@@ -1,0 +1,1 @@
+scp -r ./dev/* qnai@100.100.142.5:~/website/prd/sumg/

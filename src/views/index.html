@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闪马项目文档库</title>
+    <link rel="stylesheet" href="./stylesheet/layout.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            height: 5vh;
+        }
+
+        section {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        section p {
+            font-size: 2rem;
+            margin: 2vh;
+        }
+
+        section li {
+            font-size: 1.5rem;
+            margin: 1vh;
+        }
+
+        footer {
+            height: 5vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: .7rem;
+        }
+    </style>
+    <!-- <script src="./javascript/layout.js"></script> -->
+</head>
+<body>
+    <header></header>
+    <section>
+        <p>开发需求文档目录</p>
+        <ul>
+            <li><a href="sumg.html">上海报业集团图片媒资库应用侧开发需求文档</a></li>
+            <li><a href="xuhuihuanbao.html">徐汇环保扬尘治理应用侧开发需求文档</a></li>
+        </ul>
+    </section>
+    <footer>
+        © Copy right reserved by Supremind. Maintained by Ni Xiaohui.
+    </footer>
+
+    <!-- <div class="modal-loading component-hidden" onclick="toggleImage(event)">
+        <div>
+            <img src="" alt="">
+        </div>
+    </div> -->
+
+    <script>
+        // window.onload = function() {
+        //     fetch('./json/sumg.json?' + (new Date().getTime())).then(e => e.json()).then(file => {
+        //         arrangeDocument(document.querySelector('section'), file);
+        //     });
+        // };
+    </script>
+</body>
+</html>

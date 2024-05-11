@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上海报业集团-图片媒资库</title>
+    <link rel="stylesheet" href="./stylesheet/layout.css">
+    <script src="./javascript/layout.js"></script>
+</head>
+<body>
+    <header></header>
+    <section></section>
+    <footer></footer>
+
+    <div class="modal-loading component-hidden" onclick="toggleImage(event)">
+        <div>
+            <img src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            fetch('./json/sumg.json?' + (new Date().getTime())).then(e => e.json()).then(file => {
+                arrangeDocument(document.querySelector('section'), file);
+            });
+        };
+    </script>
+</body>
+</html>

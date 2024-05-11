@@ -1,0 +1,224 @@
+* {
+    font-family: "Microsoft YaHei";
+    box-sizing: border-box;
+    text-align: justify;
+}
+
+html {
+    font-size: 12px;
+}
+
+body {
+    background: url("../imgs/bg.jpg");
+}
+
+section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .panel-nav {
+        width: 20vw;
+
+        nav {
+            position: fixed;
+            width: 20vw;
+            height: 95vh;
+            background: white;
+            padding: 2rem;
+            box-shadow: 5px 5px 5px #aaa;
+            overflow-y: auto;
+            overflow-x: visible;
+
+            h3 {
+                text-align: center;
+            }
+
+            li {
+                padding-top: .2rem;
+            }
+
+            .gen-dir-level(10);
+            .gen-dir-level(@n, @i: 1) when (@i =< @n) {
+                a.dir-level-@{i} {
+                    padding-left: 1rem*@i;
+                    white-space: nowrap;
+                }
+                .gen-dir-level(@n, (@i + 1));
+            }
+        }
+    }
+
+    .panel-content {
+        width: 80vw;
+        display: flex;
+        justify-content: center;
+
+        .cover, .catalog, .body, .appendix {
+            page-break-after: always;
+        }
+
+        >div {
+            width: 60rem;
+            background: white;
+            padding: 6rem;
+    
+            .cover {
+                height: 60rem;
+                font-size: 3rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+    
+                p.doc-title {
+                    margin: 0;
+                    text-align: center;
+                }
+                
+                p.para {
+                    text-align: center;
+                    font-size: 1.5rem;
+                    margin: 3rem 0;
+                }
+            }
+
+            .body {
+                p.para {
+                    padding-left: 2rem;
+                    line-height: 1.5rem;
+                    // text-indent: 2rem;
+                }
+
+                ol {
+                    padding-left: 3rem+2rem;
+                    li {
+                        text-indent: -2rem;
+                        line-height: 1.5rem;
+                        // color: #666;
+                    }
+                }
+            }
+        }
+    }
+}
+
+ol {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+
+    &.chapter-level-1>li {
+        // font-size: 2rem;
+        page-break-after: always;
+    }
+    // &.chapter-level-2>li>p.chapter-title {
+    //     font-size: 1.5rem;
+    // }
+
+    .generate-chapters(10);
+    .generate-chapters(@n, @i: 1) when (@i =< @n) {
+        &.chapter-level-@{i} {
+            list-style-type: none;
+            &>li>p.chapter-title {
+                font-size: if((@i = 1), 2rem, if((@i = 2), 1.5rem, 1.2rem));
+                margin-top: if((@i = 1), 12rem, if((@i = 2), 4rem, 4rem));
+                margin-bottom: 1rem;
+                font-weight: 900;
+            }
+        }
+        .generate-chapters(@n, (@i + 1));
+    }
+}
+
+p {
+    &.para {
+        font-size: 1rem;
+    }
+
+    &.img-illustrate {
+        font-size: .75rem;
+        font-weight: bolder;
+    }
+}
+
+div.img-container {
+    width: 100%;
+    padding: 2rem 0;
+    text-align: center;
+    page-break-inside: avoid;
+    img {
+        width: 75%;
+        box-shadow: 0px 0px 2rem 0px #aaa;
+    }
+
+    img.img-small {
+        width: 50%;
+    }
+
+    p {
+        text-align: center;
+    }
+}
+
+
+.component-hidden {
+    display: none !important;
+}
+
+.modal-loading {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    background: rgba(0,0,0,.5);
+    color: white;
+    font-size: 1rem;
+    align-items: center;
+    justify-content: center;
+
+    div {
+        width: 80vw;
+        max-height: 90vh;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+
+@font-face {
+    font-family: "Microsoft YaHei";
+    src: url("../resource/font/chinese.msyh.ttf");
+    // src: url("../resource/font/baidu.woff");
+}
+
+@media print {
+    .panel-nav {
+        display: none;
+    }
+
+    .panel-content {
+        width: 100vw;
+
+        >div {
+            width: 100%;
+            padding: 0;
+        }
+    }
+
+    ul.chapter-level-1>li>p.chapter-title {
+        margin-top: 0;
+    }
+}
